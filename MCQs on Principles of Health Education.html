@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs on Health Education Lecture No. 2 Quiz</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+        .author {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        .progress-container {
+            background: #ecf0f1;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            height: 10px;
+        }
+        .progress-bar {
+            height: 100%;
+            background: #3498db;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .question-number {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: #f1f8ff;
+            border-color: #a3d0fd;
+        }
+        .option.selected {
+            background: #d1ecf1;
+            border-color: #17a2b8;
+        }
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+        .feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        .results {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .score-value {
+            font-size: 48px;
+            color: #3498db;
+            font-weight: bold;
+        }
+        .restart-btn {
+            margin-top: 20px;
+            background: #2ecc71;
+        }
+        .restart-btn:hover {
+            background: #27ae60;
+        }
+        .review-btn {
+            margin-top: 20px;
+            background: #f39c12;
+        }
+        .review-btn:hover {
+            background: #e67e22;
+        }
+        .review-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: none;
+        }
+        .review-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        .review-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #e74c3c;
+            background: white;
+            border-radius: 4px;
+        }
+        .review-question-number {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 8px;
+        }
+        .review-question-text {
+            margin-bottom: 10px;
+        }
+        .review-answer {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .review-correct {
+            color: #28a745;
+        }
+        .review-explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MCQs on Health Education Lecture No. 2 Quiz</h1>
+            <p class="author">Dr. Samy Salem</p>
+            <p class="description">Test your knowledge of Health Education Lecture No. 2</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="stats">
+            <div>Question: <span id="current-question">1</span>/<span id="total-questions">15</span></div>
+            <div>Score: <span id="score">0</span>/<span id="total-score">15</span></div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score">Your Score: <span class="score-value" id="final-score">0</span>/15</div>
+            <p id="performance-message"></p>
+            <button class="restart-btn" id="restart-btn">Restart Quiz</button>
+            <button class="review-btn" id="review-btn">Review Incorrect Answers</button>
+        </div>
+
+        <div id="review-section" class="review-section">
+            <h2 class="review-title">Questions Answered Incorrectly</h2>
+            <div id="incorrect-questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data
+        const quizData = [
+            {
+                question: "What is the lifetime chance of a 50-year-old woman experiencing a fragility fracture due to low bone mass?",
+                options: [
+                    "15.8%",
+                    "20%",
+                    "40%",
+                    "50%"
+                ],
+                answer: 2,
+                explanation: "40% (Page 2)"
+            },
+            {
+                question: "Which of the following is a non-dietary risk factor for adult-onset osteoporosis?",
+                options: [
+                    "High intake of caffeine",
+                    "Sedentary lifestyle",
+                    "Excessive calcium intake",
+                    "High sodium diet"
+                ],
+                answer: 1,
+                explanation: "Sedentary lifestyle (Page 3)"
+            },
+            {
+                question: "Besides calcium and vitamin D, which other nutrients are mentioned as important for bone composition?",
+                options: [
+                    "Vitamins A, E, and K",
+                    "Magnesium, fluoride, phosphorus, and zinc",
+                    "Selenium and chromium",
+                    "Iodine and copper"
+                ],
+                answer: 1,
+                explanation: "Magnesium, fluoride, phosphorus, and zinc (Page 3)"
+            },
+            {
+                question: "For adult women before menopause, what calcium intake is recommended for the maintenance of peak bone mass?",
+                options: [
+                    "800 mg/day",
+                    "1200 mg/day",
+                    "1300 mg/day",
+                    "1000 mg/day"
+                ],
+                answer: 3,
+                explanation: "1000 mg/day (Page 5)"
+            },
+            {
+                question: "What is the adequate daily intake of calcium for individuals aged 51-70?",
+                options: [
+                    "1000 mg",
+                    "1200 mg",
+                    "1300 mg",
+                    "1500 mg"
+                ],
+                answer: 1,
+                explanation: "1200 mg (Page 6)"
+            },
+            {
+                question: "What is the adequate daily intake of vitamin D for individuals over 70 years old?",
+                options: [
+                    "5 µg (200 IU)",
+                    "10 µg (400 IU)",
+                    "15 µg (600 IU)",
+                    "20 µg (800 IU)"
+                ],
+                answer: 2,
+                explanation: "15 µg (600 IU) (Page 6)"
+            },
+            {
+                question: "During pregnancy and lactation for a woman aged 19-50, what is the recommended adequate intake of calcium?",
+                options: [
+                    "800 mg/day",
+                    "1000 mg/day",
+                    "1200 mg/day",
+                    "1300 mg/day"
+                ],
+                answer: 1,
+                explanation: "1000 mg/day (Page 6)"
+            },
+            {
+                question: "Why are acceptance and compliance rates for hormone replacement therapy and bisphosphonates often low?",
+                options: [
+                    "They are too expensive.",
+                    "They are not effective.",
+                    "Due to potentially adverse side effects and reluctance to prevent \"silent diseases.\"",
+                    "They are difficult to administer."
+                ],
+                answer: 2,
+                explanation: "Due to potentially adverse side effects and reluctance to prevent \"silent diseases.\" (Page 7)"
+            },
+            {
+                question: "Which of the following should be done to the daily intake of protein, sodium, and caffeine to improve bone health?",
+                options: [
+                    "Increase protein, decrease sodium and caffeine.",
+                    "Increase caffeine, decrease sodium and protein.",
+                    "Increase sodium, decrease protein and caffeine.",
+                    "None of the above."
+                ],
+                answer: 0,
+                explanation: "Increase protein, decrease sodium and caffeine. (Page 11)"
+            },
+            {
+                question: "A high intake of salt (sodium) leads to bone loss because it causes:",
+                options: [
+                    "Decreased calcium absorption in the gut.",
+                    "An obligatory loss of urinary calcium.",
+                    "Direct destruction of bone cells.",
+                    "Reduction in vitamin D synthesis."
+                ],
+                answer: 1,
+                explanation: "An obligatory loss of urinary calcium. (Page 11)"
+            },
+            {
+                question: "A high dietary intake of caffeine induces:",
+                options: [
+                    "A long-term increase in bone density.",
+                    "A short-term increase in urinary calcium loss.",
+                    "Increased calcium absorption.",
+                    "Decreased sodium excretion."
+                ],
+                answer: 1,
+                explanation: "A short-term increase in urinary calcium loss. (Page 11)"
+            },
+            {
+                question: "Phytoestrogens are plant-derived compounds with a chemical structure similar to:",
+                options: [
+                    "Testosterone",
+                    "Insulin",
+                    "Endogenous estrogen",
+                    "Cortisol"
+                ],
+                answer: 2,
+                explanation: "Endogenous estrogen (Page 12)"
+            },
+            {
+                question: "What are the most common dietary sources of phytoestrogens?",
+                options: [
+                    "Meat and poultry",
+                    "Soy protein and flaxseed",
+                    "Dairy products",
+                    "Refined grains"
+                ],
+                answer: 1,
+                explanation: "Soy protein and flaxseed (Page 12)"
+            },
+            {
+                question: "What is the effect of a high dose of isoflavones (80 mg) on perimenopausal women?",
+                options: [
+                    "A significant loss of bone mineral density.",
+                    "No effect on bone health.",
+                    "Preserved lumbar bone mineral content and density.",
+                    "Increased the risk of fractures."
+                ],
+                answer: 2,
+                explanation: "Preserved lumbar bone mineral content and density. (Page 12)"
+            },
+            {
+                question: "Perimenopausal women who consume no isoflavones experience:",
+                options: [
+                    "A significant increase in bone mass.",
+                    "No change in bone mineral density.",
+                    "Preserved bone mass at all sites.",
+                    "A significant loss in lumbar spine bone mineral content and density."
+                ],
+                answer: 3,
+                explanation: "A significant loss in lumbar spine bone mineral content and density. (Page 12)"
+            }
+        ];
+
+        // Quiz state variables
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let incorrectQuestions = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const scoreEl = document.getElementById('score');
+        const totalScoreEl = document.getElementById('total-score');
+        const resultsContainer = document.getElementById('results');
+        const finalScoreEl = document.getElementById('final-score');
+        const performanceMessageEl = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        const reviewSection = document.getElementById('review-section');
+        const incorrectQuestionsList = document.getElementById('incorrect-questions-list');
+
+        // Initialize quiz
+        function initQuiz() {
+            totalQuestionsEl.textContent = quizData.length;
+            totalScoreEl.textContent = quizData.length;
+            showQuestion();
+            updateProgressBar();
+            
+            // Event listeners
+            prevBtn.addEventListener('click', showPreviousQuestion);
+            nextBtn.addEventListener('click', showNextQuestion);
+            restartBtn.addEventListener('click', restartQuiz);
+            reviewBtn.addEventListener('click', showIncorrectQuestions);
+        }
+
+        // Show current question
+        function showQuestion() {
+            currentQuestionEl.textContent = currentQuestion + 1;
+            scoreEl.textContent = score;
+            
+            const question = quizData[currentQuestion];
+            let optionsHTML = '';
+            
+            question.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionClass += ' selected';
+                    if (index === question.answer) {
+                        optionClass += ' correct';
+                    } else {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div class="${optionClass}" data-index="${index}">
+                        ${String.fromCharCode(65 + index)}) ${option}
+                    </div>
+                `;
+            });
+            
+            let feedbackHTML = '';
+            if (userAnswers[currentQuestion] !== null) {
+                const isCorrect = userAnswers[currentQuestion] === question.answer;
+                feedbackHTML = `
+                    <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+                        ${isCorrect ? '✓ Correct!' : '✗ Incorrect!'} 
+                        ${!isCorrect ? `Correct answer: ${String.fromCharCode(65 + question.answer)}) ${question.options[question.answer]}` : ''}
+                        <br><br>Explanation: ${question.explanation}
+                    </div>
+                `;
+            }
+            
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-number">Question ${currentQuestion + 1}/${quizData.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">${optionsHTML}</div>
+                    ${feedbackHTML}
+                </div>
+            `;
+            
+            // Add event listeners to options
+            const optionElements = quizContainer.querySelectorAll('.option');
+            optionElements.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish Quiz' : 'Next';
+        }
+
+        // Select an option
+        function selectOption(e) {
+            if (userAnswers[currentQuestion] !== null) return; // Already answered
+            
+            const selectedOption = e.currentTarget;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            
+            userAnswers[currentQuestion] = selectedIndex;
+            
+            // Check if answer is correct
+            if (selectedIndex === quizData[currentQuestion].answer) {
+                score++;
+                scoreEl.textContent = score;
+            } else {
+                // Add to incorrect questions list
+                incorrectQuestions.push({
+                    question: quizData[currentQuestion].question,
+                    userAnswer: selectedIndex,
+                    correctAnswer: quizData[currentQuestion].answer,
+                    options: quizData[currentQuestion].options,
+                    explanation: quizData[currentQuestion].explanation,
+                    questionNumber: currentQuestion + 1
+                });
+            }
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            document.querySelector('.navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            
+            finalScoreEl.textContent = score;
+            
+            // Performance message
+            const percentage = (score / quizData.length) * 100;
+            let message = '';
+            if (percentage >= 80) {
+                message = 'Excellent! You have a strong understanding of Health Education Lecture No. 2.';
+            } else if (percentage >= 60) {
+                message = 'Good job! You have a solid grasp of the material.';
+            } else if (percentage >= 40) {
+                message = 'Not bad! Review the material and try again.';
+            } else {
+                message = 'Keep studying! Review the lectures and try again.';
+            }
+            
+            performanceMessageEl.textContent = message;
+            resultsContainer.style.display = 'block';
+            
+            // Show review button only if there are incorrect answers
+            if (incorrectQuestions.length > 0) {
+                reviewBtn.style.display = 'inline-block';
+            } else {
+                reviewBtn.style.display = 'none';
+            }
+        }
+
+        // Show incorrect questions
+        function showIncorrectQuestions() {
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'block';
+            
+            let incorrectHTML = '';
+            incorrectQuestions.forEach((item, index) => {
+                incorrectHTML += `
+                    <div class="review-question">
+                        <div class="review-question-number">Question ${item.questionNumber}</div>
+                        <div class="review-question-text">${item.question}</div>
+                        <div>Your answer: ${String.fromCharCode(65 + item.userAnswer)}) ${item.options[item.userAnswer]}</div>
+                        <div class="review-answer review-correct">Correct answer: ${String.fromCharCode(65 + item.correctAnswer)}) ${item.options[item.correctAnswer]}</div>
+                        <div class="review-explanation">${item.explanation}</div>
+                    </div>
+                `;
+            });
+            
+            incorrectQuestionsList.innerHTML = incorrectHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            incorrectQuestions = [];
+            
+            quizContainer.style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.querySelector('.stats').style.display = 'flex';
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'none';
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Initialize the quiz when the page loads
+        window.addEventListener('load', initQuiz);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs on Health Education Lecture No. 6 & 7 Quiz</title>
+    <style>
+        :root {
+            --bg-color: #f5f7fa;
+            --container-bg: white;
+            --text-color: #333;
+            --border-color: #ddd;
+            --primary-color: #3498db;
+            --header-color: #2c3e50;
+            --secondary-text: #7f8c8d;
+            --progress-bg: #ecf0f1;
+            --question-bg: #f8f9fa;
+            --option-bg: #fff;
+            --option-hover: #f1f8ff;
+            --option-selected: #d1ecf1;
+            --correct-bg: #d4edda;
+            --correct-border: #28a745;
+            --incorrect-bg: #f8d7da;
+            --incorrect-border: #dc3545;
+            --button-bg: #3498db;
+            --button-hover: #2980b9;
+            --button-disabled: #bdc3c7;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #ecf0f1;
+            --toggle-slider: white;
+            --toggle-text: #7f8c8d;
+        }
+
+        .dark-mode {
+            --bg-color: #1a1a2e;
+            --container-bg: #16213e;
+            --text-color: #e6e6e6;
+            --border-color: #394867;
+            --primary-color: #4cc9f0;
+            --header-color: #e6e6e6;
+            --secondary-text: #a9a9a9;
+            --progress-bg: #394867;
+            --question-bg: #1f4068;
+            --option-bg: #16213e;
+            --option-hover: #1f4068;
+            --option-selected: #1f4068;
+            --correct-bg: #2d5a2d;
+            --correct-border: #4caf50;
+            --incorrect-bg: #5a2d2d;
+            --incorrect-border: #f44336;
+            --button-bg: #4cc9f0;
+            --button-hover: #3aa8d0;
+            --button-disabled: #5d6d7e;
+            --restart-bg: #2ecc71;
+            --restart-hover: #27ae60;
+            --review-bg: #f39c12;
+            --review-hover: #e67e22;
+            --toggle-bg: #394867;
+            --toggle-slider: #4cc9f0;
+            --toggle-text: #e6e6e6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            position: relative;
+        }
+        h1 {
+            color: var(--header-color);
+            margin-bottom: 5px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+        .author {
+            color: var(--secondary-text);
+            font-style: italic;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .description {
+            color: var(--secondary-text);
+            margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        .theme-toggle {
+            position: absolute;
+            top: 35px;
+            right: 0;
+            display: flex;
+            align-items: center;
+        }
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 34px;
+        }
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--toggle-text);
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 60px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--toggle-slider);
+            transition: .4s;
+            border-radius: 34px;
+            z-index: 1;
+        }
+        .slider-text {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .light-text, .dark-text {
+            transition: opacity 0.3s;
+        }
+        .dark-mode .light-text {
+            opacity: 0.5;
+        }
+        .light-text {
+            opacity: 0.5;
+        }
+        .dark-mode .dark-text {
+            opacity: 1;
+        }
+        .dark-text {
+            opacity: 0.5;
+        }
+        input:checked + .slider:before {
+            transform: translateX(52px);
+        }
+        .progress-container {
+            background: var(--progress-bg);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            height: 10px;
+            transition: background-color 0.3s;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease, background-color 0.3s;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: var(--header-color);
+            transition: color 0.3s;
+        }
+        .question {
+            background: var(--question-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .question-number {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            background: var(--option-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: var(--option-hover);
+            border-color: var(--primary-color);
+        }
+        .option.selected {
+            background: var(--option-selected);
+            border-color: var(--primary-color);
+        }
+        .option.correct {
+            background: var(--correct-bg);
+            border-color: var(--correct-border);
+        }
+        .option.incorrect {
+            background: var(--incorrect-bg);
+            border-color: var(--incorrect-border);
+        }
+        .feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback.correct {
+            background: var(--correct-bg);
+            color: var(--text-color);
+            border: 1px solid var(--correct-border);
+            display: block;
+        }
+        .feedback.incorrect {
+            background: var(--incorrect-bg);
+            color: var(--text-color);
+            border: 1px solid var(--incorrect-border);
+            display: block;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: var(--button-hover);
+        }
+        button:disabled {
+            background: var(--button-disabled);
+            cursor: not-allowed;
+        }
+        .results {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--header-color);
+        }
+        .score-value {
+            font-size: 48px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .restart-btn {
+            margin-top: 20px;
+            background: var(--restart-bg);
+        }
+        .restart-btn:hover {
+            background: var(--restart-hover);
+        }
+        .review-btn {
+            margin-top: 20px;
+            background: var(--review-bg);
+        }
+        .review-btn:hover {
+            background: var(--review-hover);
+        }
+        .review-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--question-bg);
+            border-radius: 8px;
+            display: none;
+        }
+        .review-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--header-color);
+            text-align: center;
+        }
+        .review-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid var(--incorrect-border);
+            background: var(--container-bg);
+            border-radius: 4px;
+        }
+        .review-question-number {
+            font-weight: bold;
+            color: var(--incorrect-border);
+            margin-bottom: 8px;
+        }
+        .review-question-text {
+            margin-bottom: 10px;
+        }
+        .review-answer {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .review-correct {
+            color: var(--correct-border);
+        }
+        .review-explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: var(--secondary-text);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MCQs on Health Education Lecture No. 6 & 7 Quiz</h1>
+            <p class="author">Dr. Samy Salem</p>
+            <p class="description">Test your knowledge of Nutrition, Diet Planning, and Therapeutic Diets</p>
+            <div class="theme-toggle">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-toggle">
+                    <span class="slider">
+                        <div class="slider-text">
+                            <span class="light-text">Light</span>
+                            <span class="dark-text">Dark</span>
+                        </div>
+                    </span>
+                </label>
+            </div>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="stats">
+            <div>Question: <span id="current-question">1</span>/<span id="total-questions">45</span></div>
+            <div>Score: <span id="score">0</span>/<span id="total-score">45</span></div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score">Your Score: <span class="score-value" id="final-score">0</span>/45</div>
+            <p id="performance-message"></p>
+            <button class="restart-btn" id="restart-btn">Restart Quiz</button>
+            <button class="review-btn" id="review-btn">Review Incorrect Answers</button>
+        </div>
+
+        <div id="review-section" class="review-section">
+            <h2 class="review-title">Questions Answered Incorrectly</h2>
+            <div id="incorrect-questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data (45 questions from the PDF)
+        const quizData = [
+            {
+                question: "What is the primary application of studying different nutrients?",
+                options: [
+                    "To diagnose nutritional deficiencies.",
+                    "To properly select foods for planning an adequate diet to promote health.",
+                    "To develop new pharmaceutical supplements.",
+                    "To calculate exact calorie counts for athletes."
+                ],
+                answer: 1,
+                explanation: "B) To properly select foods for planning an adequate diet to promote health. (Page 3)"
+            },
+            {
+                question: "According to WHO, what is the key to maintaining a healthy body weight?",
+                options: [
+                    "Avoiding all fats.",
+                    "Balancing energy intake with energy expenditure.",
+                    "Eating only plant-based foods.",
+                    "Consuming high-protein diets."
+                ],
+                answer: 1,
+                explanation: "B) Balancing energy intake with energy expenditure. (Page 4)"
+            },
+            {
+                question: "For weight loss, the WHO recommends how many minutes of physical activity most days of the week?",
+                options: [
+                    "30 minutes",
+                    "60 minutes",
+                    "60-90 minutes",
+                    "90 minutes"
+                ],
+                answer: 2,
+                explanation: "C) 60-90 minutes (Page 4)"
+            },
+            {
+                question: "Which of the following is a WHO recommendation regarding fats and oils?",
+                options: [
+                    "Shift from saturated fats (SF) to unsaturated fats (USF) and eliminate industrial trans fats.",
+                    "Eliminate all fats from the diet.",
+                    "Consume only animal-based fats.",
+                    "Increase intake of trans fats for energy."
+                ],
+                answer: 0,
+                explanation: "A) Shift from saturated fats (SF) to unsaturated fats (USF) and eliminate industrial trans fats. (Page 5)"
+            },
+            {
+                question: "A food source rich in Omega-3 fatty acids, as recommended by WHO, is:",
+                options: [
+                    "Red meat",
+                    "Butter",
+                    "Salmon",
+                    "White bread"
+                ],
+                answer: 2,
+                explanation: "C) Salmon (Page 5)"
+            },
+            {
+                question: "The WHO recommends limiting daily salt intake to less than how many grams to help prevent hypertension?",
+                options: [
+                    "2 g",
+                    "5 g",
+                    "10 g",
+                    "15 g"
+                ],
+                answer: 1,
+                explanation: "B) 5 g (Page 5)"
+            },
+            {
+                question: "What percentage of cereals/grains should preferably be whole grains, according to WHO recommendations?",
+                options: [
+                    "25%",
+                    "50%",
+                    "75%",
+                    "100%"
+                ],
+                answer: 1,
+                explanation: "B) 50% (Page 6)"
+            },
+            {
+                question: "Which cooking method is preferred over boiling for vegetables to preserve nutrients?",
+                options: [
+                    "Frying",
+                    "Roasting",
+                    "Microwaving",
+                    "Steaming"
+                ],
+                answer: 3,
+                explanation: "D) Steaming (Page 7)"
+            },
+            {
+                question: "Why is a small amount of oil recommended when cooking vegetables?",
+                options: [
+                    "To improve the taste.",
+                    "To increase the calorie content.",
+                    "To enhance absorption of fat-soluble vitamins.",
+                    "To prevent burning."
+                ],
+                answer: 2,
+                explanation: "C) To enhance absorption of fat-soluble vitamins. (Page 7)"
+            },
+            {
+                question: "According to the WHO, how often should fish be consumed?",
+                options: [
+                    "Once a month",
+                    "Once a week",
+                    "At least twice a week",
+                    "Daily"
+                ],
+                answer: 2,
+                explanation: "C) At least twice a week (Page 7)"
+            },
+            {
+                question: "What type of dairy products are preferably recommended for daily consumption?",
+                options: [
+                    "Low-fat products",
+                    "Full-fat products",
+                    "Sweetened products",
+                    "Fermented products only"
+                ],
+                answer: 0,
+                explanation: "A) Low-fat products (Page 7)"
+            },
+            {
+                question: "What is the primary purpose of a Food Guide?",
+                options: [
+                    "To list all available food brands.",
+                    "To graphically display messages of dietary guidelines for meal planning.",
+                    "To prescribe specific diets for diseases.",
+                    "To calculate body mass index (BMI)."
+                ],
+                answer: 1,
+                explanation: "B) To graphically display messages of dietary guidelines for meal planning. (Page 9)"
+            },
+            {
+                question: "According to the MyPlate guide, what are the five building block food groups?",
+                options: [
+                    "Fats, Proteins, Carbohydrates, Vitamins, Minerals",
+                    "Meat, Dairy, Grains, Sweets, Oils",
+                    "Cereals, Legumes, Nuts, Seeds, Fruits",
+                    "Fruits, Vegetables, Grains, Protein Foods, Dairy"
+                ],
+                answer: 3,
+                explanation: "D) Fruits, Vegetables, Grains, Protein Foods, Dairy (Page 12)"
+            },
+            {
+                question: "The MyPlate recommendation for grains is to:",
+                options: [
+                    "Avoid all refined grains.",
+                    "Make at least half your grains whole.",
+                    "Consume grains only at dinner.",
+                    "Eat grains in unlimited quantities."
+                ],
+                answer: 1,
+                explanation: "B) Make at least half your grains whole. (Page 13)"
+            },
+            {
+                question: "For protein foods, MyPlate recommends:",
+                options: [
+                    "Go lean on protein.",
+                    "Eat red meat daily.",
+                    "Avoid plant-based proteins.",
+                    "Consume protein only after exercise."
+                ],
+                answer: 0,
+                explanation: "A) Go lean on protein. (Page 13)"
+            },
+            {
+                question: "According to MyPlate, most of your fat sources should come from:",
+                options: [
+                    "Butter and lard.",
+                    "Fish, nuts, and vegetable oils.",
+                    "Cheese and cream.",
+                    "Processed meats."
+                ],
+                answer: 1,
+                explanation: "B) Fish, nuts, and vegetable oils. (Page 13)"
+            },
+            {
+                question: "Diet therapy is considered:",
+                options: [
+                    "Less important than pharmacotherapy.",
+                    "Only necessary for weight loss.",
+                    "As important as pharmacotherapy in managing many diseases.",
+                    "A substitute for surgery."
+                ],
+                answer: 2,
+                explanation: "C) As important as pharmacotherapy in managing many diseases. (Page 15)"
+            },
+            {
+                question: "A clear liquid diet is characterized by:",
+                options: [
+                    "Being high in fiber and residue.",
+                    "Consisting of opaque fluids like milk.",
+                    "Containing only transparent fluids that leave no residue.",
+                    "Being nutritionally adequate for long-term use."
+                ],
+                answer: 2,
+                explanation: "C) Containing only transparent fluids that leave no residue. (Page 16)"
+            },
+            {
+                question: "A clear liquid diet is typically indicated for:",
+                options: [
+                    "Postoperative patients and GI illness.",
+                    "Long-term weight management.",
+                    "Children for growth.",
+                    "Athletes for performance."
+                ],
+                answer: 0,
+                explanation: "A) Postoperative patients and GI illness. (Page 16)"
+            },
+            {
+                question: "Which diet is described as 'easy to chew and digest, low in fiber and fat'?",
+                options: [
+                    "Clear liquid diet",
+                    "Full liquid diet",
+                    "Soft diet",
+                    "General diet"
+                ],
+                answer: 2,
+                explanation: "C) Soft diet (Page 17)"
+            },
+            {
+                question: "A general diet is defined as:",
+                options: [
+                    "A diet for specific therapeutic needs.",
+                    "A clear liquid diet.",
+                    "A balanced diet not requiring dietary modifications.",
+                    "A high-protein, low-carb diet."
+                ],
+                answer: 2,
+                explanation: "C) A balanced diet not requiring dietary modifications. (Page 17)"
+            },
+            {
+                question: "A high-energy diet would be most appropriate for a patient with:",
+                options: [
+                    "Obesity",
+                    "Marasmus",
+                    "Hypertension",
+                    "Diabetes"
+                ],
+                answer: 1,
+                explanation: "B) Marasmus (Page 18)"
+            },
+            {
+                question: "A low-fat diet would be indicated for a patient with:",
+                options: [
+                    "Protein-energy malnutrition (PEM)",
+                    "Gall bladder disease",
+                    "Hyperthyroidism",
+                    "Burns"
+                ],
+                answer: 1,
+                explanation: "B) Gall bladder disease (Page 19)"
+            },
+            {
+                question: "A high-protein diet is typically prescribed for conditions such as:",
+                options: [
+                    "Hepatic failure",
+                    "Glomerulonephritis",
+                    "Constipation",
+                    "Fever, injury, or surgery"
+                ],
+                answer: 3,
+                explanation: "D) Fever, injury, or surgery (Page 19)"
+            },
+            {
+                question: "A high-fiber diet would be beneficial for managing:",
+                options: [
+                    "Acute diarrhea",
+                    "Type II Diabetes Mellitus",
+                    "Post-surgical recovery",
+                    "Clear liquid diet transition"
+                ],
+                answer: 1,
+                explanation: "B) Type II Diabetes Mellitus (Page 20)"
+            },
+            {
+                question: "A low-sodium diet is primarily indicated for:",
+                options: [
+                    "Cardiovascular disease (CVD).",
+                    "Those exposed to excessive heat.",
+                    "Weight gain.",
+                    "Increased physical activity."
+                ],
+                answer: 0,
+                explanation: "A) Cardiovascular disease (CVD). (Page 20)"
+            },
+            {
+                question: "Nutritionally vulnerable groups are those at risk due to:",
+                options: [
+                    "Lack of access to supermarkets.",
+                    "Increased physiological needs for certain nutrients.",
+                    "Preference for fast food.",
+                    "High levels of physical activity."
+                ],
+                answer: 1,
+                explanation: "B) Increased physiological needs for certain nutrients. (Page 21)"
+            },
+            {
+                question: "Why are nutrient requirements proportionately highest during infancy?",
+                options: [
+                    "To support rapid growth and development.",
+                    "To build fat reserves for adulthood.",
+                    "To develop a taste for diverse foods.",
+                    "To compensate for low activity levels."
+                ],
+                answer: 0,
+                explanation: "A) To support rapid growth and development. (Page 22)"
+            },
+            {
+                question: "What is described as the normal and preferred mode of infant feeding?",
+                options: [
+                    "Formula feeding",
+                    "Bottle feeding",
+                    "Breastfeeding",
+                    "Early introduction of solid foods"
+                ],
+                answer: 2,
+                explanation: "C) Breastfeeding (Page 22)"
+            },
+            {
+                question: "What is the first stage of breast milk, secreted in the first few days after birth?",
+                options: [
+                    "Transitional milk",
+                    "Mature milk",
+                    "Fore-milk",
+                    "Colostrum"
+                ],
+                answer: 3,
+                explanation: "D) Colostrum (Page 23)"
+            },
+            {
+                question: "Colostrum is characterized by being high in:",
+                options: [
+                    "Lactose and water",
+                    "Protein and immunoglobulin",
+                    "Fat and carbohydrates",
+                    "Sodium and potassium"
+                ],
+                answer: 1,
+                explanation: "B) Protein and immunoglobulin (Page 23)"
+            },
+            {
+                question: "According to WHO/UNICEF, when should breastfeeding be initiated after birth?",
+                options: [
+                    "Within 6-12 hours",
+                    "After 24 hours",
+                    "When the mother feels ready",
+                    "Within 0.5 - 1 hour"
+                ],
+                answer: 3,
+                explanation: "D) Within 0.5 - 1 hour (Page 24)"
+            },
+            {
+                question: "WHO recommends exclusive breastfeeding for the first:",
+                options: [
+                    "3 months of life.",
+                    "6 months of life.",
+                    "9 months of life.",
+                    "12 months of life."
+                ],
+                answer: 1,
+                explanation: "B) 6 months of life. (Page 24)"
+            },
+            {
+                question: "Which component in human milk binds iron to inhibit the growth of certain bacteria?",
+                options: [
+                    "Bifidus factor",
+                    "Immunoglobulin A (IgA)",
+                    "Lactoferrin",
+                    "Lysozyme"
+                ],
+                answer: 2,
+                explanation: "C) Lactoferrin (Page 26)"
+            },
+            {
+                question: "A benefit of breastfeeding for the mother includes:",
+                options: [
+                    "Guaranteed weight loss.",
+                    "Decreased risk of postpartum hemorrhage.",
+                    "Elimination of all postpartum depression.",
+                    "Increased fertility immediately."
+                ],
+                answer: 1,
+                explanation: "B) Decreased risk of postpartum hemorrhage. (Page 27)"
+            },
+            {
+                question: "Weaning is defined as the process of:",
+                options: [
+                    "Gradually replacing milk feeds with a variety of foods.",
+                    "Stopping all milk feeds abruptly.",
+                    "Introducing only fruit juices.",
+                    "Switching from breast milk to formula only."
+                ],
+                answer: 0,
+                explanation: "A) Gradually replacing milk feeds with a variety of foods. (Page 29)"
+            },
+            {
+                question: "When is it recommended to start the weaning process?",
+                options: [
+                    "From the 4th month",
+                    "From the 7th month",
+                    "From the 12th month",
+                    "From the 2nd year"
+                ],
+                answer: 1,
+                explanation: "B) From the 7th month (Page 29)"
+            },
+            {
+                question: "At 7 months, which of the following is an appropriate weaning food?",
+                options: [
+                    "Mashed liver",
+                    "Whole nuts",
+                    "Yogurt and mashed vegetables",
+                    "Cow's milk"
+                ],
+                answer: 2,
+                explanation: "C) Yogurt and mashed vegetables (Page 29)"
+            },
+            {
+                question: "Introduction of animal milk should be postponed until what age?",
+                options: [
+                    "6 months",
+                    "9 months",
+                    "12 months",
+                    "18 months"
+                ],
+                answer: 2,
+                explanation: "C) 12 months (Page 30)"
+            },
+            {
+                question: "What is the Baby-Friendly Hospital Initiative (BFHI)?",
+                options: [
+                    "A program to provide free formula.",
+                    "A global initiative to create healthcare environments that support breastfeeding as the norm.",
+                    "A vaccination campaign for newborns.",
+                    "A diet plan for pregnant women."
+                ],
+                answer: 1,
+                explanation: "B) A global initiative to create healthcare environments that support breastfeeding as the norm. (Page 31)"
+            },
+            {
+                question: "According to the '10 Steps to Successful Breastfeeding,' what should be given to newborn infants?",
+                options: [
+                    "No food or drink other than breast milk, unless medically indicated.",
+                    "Glucose water immediately.",
+                    "Formula every 3 hours.",
+                    "Pacifiers to soothe them."
+                ],
+                answer: 0,
+                explanation: "A) No food or drink other than breast milk, unless medically indicated. (Page 32)"
+            },
+            {
+                question: "What does 'rooming-in' refer to in the context of breastfeeding support?",
+                options: [
+                    "Allowing mothers and infants to remain together 24 hours a day.",
+                    "Keeping the baby in a separate nursery.",
+                    "Having the father stay in the room.",
+                    "Using a specific room for breastfeeding only."
+                ],
+                answer: 0,
+                explanation: "A) Allowing mothers and infants to remain together 24 hours a day. (Page 32)"
+            },
+            {
+                question: "What is one aim of the BFHI regarding breast milk substitutes?",
+                options: [
+                    "To distribute them freely to all mothers.",
+                    "To end the distribution of free and low-cost supplies to health facilities.",
+                    "To promote them as equal to breast milk.",
+                    "To use them for all infants in the NICU."
+                ],
+                answer: 1,
+                explanation: "B) To end the distribution of free and low-cost supplies to health facilities. (Page 31)"
+            },
+            {
+                question: "A high-fat diet would be most appropriate for a patient with:",
+                options: [
+                    "Low energy diets",
+                    "Obesity",
+                    "Hypertension",
+                    "Protein energy malnutrition (PEM)"
+                ],
+                answer: 3,
+                explanation: "D) Protein energy malnutrition (PEM) (Page 18)"
+            },
+            {
+                question: "A low-fiber diet would be most appropriate for a patient with:",
+                options: [
+                    "Constipation",
+                    "Hypertension",
+                    "Hypercholesterolemia",
+                    "GIT problems"
+                ],
+                answer: 3,
+                explanation: "D) GIT problems (Page 18)"
+            }
+        ];
+
+        // Quiz state variables
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let incorrectQuestions = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const scoreEl = document.getElementById('score');
+        const totalScoreEl = document.getElementById('total-score');
+        const resultsContainer = document.getElementById('results');
+        const finalScoreEl = document.getElementById('final-score');
+        const performanceMessageEl = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        const reviewSection = document.getElementById('review-section');
+        const incorrectQuestionsList = document.getElementById('incorrect-questions-list');
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const lightText = document.querySelector('.light-text');
+        const darkText = document.querySelector('.dark-text');
+
+        // Initialize quiz
+        function initQuiz() {
+            totalQuestionsEl.textContent = quizData.length;
+            totalScoreEl.textContent = quizData.length;
+            showQuestion();
+            updateProgressBar();
+            
+            // Initialize dark mode based on system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                darkModeToggle.checked = true;
+                updateToggleText(true);
+            } else {
+                updateToggleText(false);
+            }
+            
+            // Event listeners
+            prevBtn.addEventListener('click', showPreviousQuestion);
+            nextBtn.addEventListener('click', showNextQuestion);
+            restartBtn.addEventListener('click', restartQuiz);
+            reviewBtn.addEventListener('click', showIncorrectQuestions);
+            darkModeToggle.addEventListener('change', toggleDarkMode);
+        }
+
+        // Toggle dark mode
+        function toggleDarkMode() {
+            const isDarkMode = darkModeToggle.checked;
+            document.body.classList.toggle('dark-mode', isDarkMode);
+            updateToggleText(isDarkMode);
+        }
+
+        // Update toggle text opacity
+        function updateToggleText(isDarkMode) {
+            if (isDarkMode) {
+                lightText.style.opacity = '0.5';
+                darkText.style.opacity = '1';
+            } else {
+                lightText.style.opacity = '1';
+                darkText.style.opacity = '0.5';
+            }
+        }
+
+        // Show current question
+        function showQuestion() {
+            currentQuestionEl.textContent = currentQuestion + 1;
+            scoreEl.textContent = score;
+            
+            const question = quizData[currentQuestion];
+            let optionsHTML = '';
+            
+            question.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionClass += ' selected';
+                    if (index === question.answer) {
+                        optionClass += ' correct';
+                    } else {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div class="${optionClass}" data-index="${index}">
+                        ${String.fromCharCode(65 + index)}) ${option}
+                    </div>
+                `;
+            });
+            
+            let feedbackHTML = '';
+            if (userAnswers[currentQuestion] !== null) {
+                const isCorrect = userAnswers[currentQuestion] === question.answer;
+                feedbackHTML = `
+                    <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+                        ${isCorrect ? '✓ Correct!' : '✗ Incorrect!'} 
+                        ${!isCorrect ? `Correct answer: ${String.fromCharCode(65 + question.answer)}) ${question.options[question.answer]}` : ''}
+                        <br><br>Explanation: ${question.explanation}
+                    </div>
+                `;
+            }
+            
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-number">Question ${currentQuestion + 1}/${quizData.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">${optionsHTML}</div>
+                    ${feedbackHTML}
+                </div>
+            `;
+            
+            // Add event listeners to options
+            const optionElements = quizContainer.querySelectorAll('.option');
+            optionElements.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish Quiz' : 'Next';
+        }
+
+        // Select an option
+        function selectOption(e) {
+            if (userAnswers[currentQuestion] !== null) return; // Already answered
+            
+            const selectedOption = e.currentTarget;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            
+            userAnswers[currentQuestion] = selectedIndex;
+            
+            // Check if answer is correct
+            if (selectedIndex === quizData[currentQuestion].answer) {
+                score++;
+                scoreEl.textContent = score;
+            } else {
+                // Add to incorrect questions list
+                incorrectQuestions.push({
+                    question: quizData[currentQuestion].question,
+                    userAnswer: selectedIndex,
+                    correctAnswer: quizData[currentQuestion].answer,
+                    options: quizData[currentQuestion].options,
+                    explanation: quizData[currentQuestion].explanation,
+                    questionNumber: currentQuestion + 1
+                });
+            }
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            document.querySelector('.navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            
+            finalScoreEl.textContent = score;
+            
+            // Performance message
+            const percentage = (score / quizData.length) * 100;
+            let message = '';
+            if (percentage >= 80) {
+                message = 'Excellent! You have a strong understanding of Nutrition, Diet Planning, and Therapeutic Diets.';
+            } else if (percentage >= 60) {
+                message = 'Good job! You have a solid grasp of the material.';
+            } else if (percentage >= 40) {
+                message = 'Not bad! Review the material and try again.';
+            } else {
+                message = 'Keep studying! Review the lectures and try again.';
+            }
+            
+            performanceMessageEl.textContent = message;
+            resultsContainer.style.display = 'block';
+            
+            // Show review button only if there are incorrect answers
+            if (incorrectQuestions.length > 0) {
+                reviewBtn.style.display = 'inline-block';
+            } else {
+                reviewBtn.style.display = 'none';
+            }
+        }
+
+        // Show incorrect questions
+        function showIncorrectQuestions() {
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'block';
+            
+            let incorrectHTML = '';
+            incorrectQuestions.forEach((item, index) => {
+                incorrectHTML += `
+                    <div class="review-question">
+                        <div class="review-question-number">Question ${item.questionNumber}</div>
+                        <div class="review-question-text">${item.question}</div>
+                        <div>Your answer: ${String.fromCharCode(65 + item.userAnswer)}) ${item.options[item.userAnswer]}</div>
+                        <div class="review-answer review-correct">Correct answer: ${String.fromCharCode(65 + item.correctAnswer)}) ${item.options[item.correctAnswer]}</div>
+                        <div class="review-explanation">${item.explanation}</div>
+                    </div>
+                `;
+            });
+            
+            incorrectQuestionsList.innerHTML = incorrectHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            incorrectQuestions = [];
+            
+            quizContainer.style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.querySelector('.stats').style.display = 'flex';
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'none';
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Initialize the quiz when the page loads
+        window.onload = initQuiz;
+    </script>
+</body>
+</html>

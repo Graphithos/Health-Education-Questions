@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCQs on Health Education Lecture No. 1 Quiz</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+        .author {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .description {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        .progress-container {
+            background: #ecf0f1;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            position: relative;
+            height: 10px;
+        }
+        .progress-bar {
+            height: 100%;
+            background: #3498db;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .question-number {
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-gap: 10px;
+        }
+        .option {
+            padding: 12px 15px;
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: #f1f8ff;
+            border-color: #a3d0fd;
+        }
+        .option.selected {
+            background: #d1ecf1;
+            border-color: #17a2b8;
+        }
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+        .feedback {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+        }
+        .results {
+            text-align: center;
+            padding: 30px;
+            display: none;
+        }
+        .score {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .score-value {
+            font-size: 48px;
+            color: #3498db;
+            font-weight: bold;
+        }
+        .restart-btn {
+            margin-top: 20px;
+            background: #2ecc71;
+        }
+        .restart-btn:hover {
+            background: #27ae60;
+        }
+        .review-btn {
+            margin-top: 20px;
+            background: #f39c12;
+        }
+        .review-btn:hover {
+            background: #e67e22;
+        }
+        .review-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: none;
+        }
+        .review-title {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        .review-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 4px solid #e74c3c;
+            background: white;
+            border-radius: 4px;
+        }
+        .review-question-number {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 8px;
+        }
+        .review-question-text {
+            margin-bottom: 10px;
+        }
+        .review-answer {
+            margin-top: 8px;
+            font-weight: bold;
+        }
+        .review-correct {
+            color: #28a745;
+        }
+        .review-explanation {
+            margin-top: 5px;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MCQs on Health Education Lecture No. 1 Quiz</h1>
+            <p class="author">Dr. Samy Salem</p>
+            <p class="description">Test your knowledge of Health Education Lecture No. 1</p>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="stats">
+            <div>Question: <span id="current-question">1</span>/<span id="total-questions">20</span></div>
+            <div>Score: <span id="score">0</span>/<span id="total-score">20</span></div>
+        </div>
+
+        <div id="quiz-container">
+            <!-- Questions will be inserted here by JavaScript -->
+        </div>
+
+        <div class="navigation">
+            <button id="prev-btn" disabled>Previous</button>
+            <button id="next-btn">Next</button>
+        </div>
+
+        <div id="results" class="results">
+            <div class="score">Your Score: <span class="score-value" id="final-score">0</span>/20</div>
+            <p id="performance-message"></p>
+            <button class="restart-btn" id="restart-btn">Restart Quiz</button>
+            <button class="review-btn" id="review-btn">Review Incorrect Answers</button>
+        </div>
+
+        <div id="review-section" class="review-section">
+            <h2 class="review-title">Questions Answered Incorrectly</h2>
+            <div id="incorrect-questions-list"></div>
+        </div>
+    </div>
+
+    <script>
+        // Quiz data
+        const quizData = [
+            {
+                question: "What is the primary definition of Health Education (HE)?",
+                options: [
+                    "A process of transmitting health-related information to a target group designed to promote health and prevent illness.",
+                    "The treatment of specific illnesses through medical intervention.",
+                    "A system for managing chronic diseases exclusively.",
+                    "The process of building hospitals and health clinics."
+                ],
+                answer: 0,
+                explanation: "A process of transmitting health-related information to a target group designed to promote health and prevent illness. (Page 4)"
+            },
+            {
+                question: "Which of the following is an outcome of proper Health Education?",
+                options: [
+                    "Increased healthcare costs",
+                    "Changing knowledge, attitude, behavior, decision-making, and social change",
+                    "Guaranteeing a disease-free life",
+                    "Replacing the need for medical doctors"
+                ],
+                answer: 1,
+                explanation: "Changing knowledge, attitude, behavior, decision-making, and social change (Page 4)"
+            },
+            {
+                question: "How is Health Literacy defined?",
+                options: [
+                    "The number of health-related books a person has read.",
+                    "The ability to understand health information and use it to make good decisions about health and medical care.",
+                    "The skill of medical professionals in diagnosing diseases.",
+                    "The availability of health services in a community."
+                ],
+                answer: 1,
+                explanation: "The ability to understand health information and use it to make good decisions about health and medical care. (Page 5)"
+            },
+            {
+                question: "Which of the following is a potential consequence of limited health literacy for a patient?",
+                options: [
+                    "Increased ability to manage a chronic disease.",
+                    "Enhanced skill in locating providers and services.",
+                    "Improved ability to fill out complex forms.",
+                    "Difficulty sharing personal information such as health habits."
+                ],
+                answer: 3,
+                explanation: "Difficulty sharing personal information such as health habits. (Page 6)"
+            },
+            {
+                question: "The \"Health Consciousness\" goal of health education is primarily concerned with:",
+                options: [
+                    "Changing people's behavior directly.",
+                    "Increasing awareness about health.",
+                    "Making health decisions for people.",
+                    "Providing medical treatment."
+                ],
+                answer: 1,
+                explanation: "Increasing awareness about health. (Page 8)"
+            },
+            {
+                question: "Which goal of health education focuses on helping people identify what is important to their health?",
+                options: [
+                    "Knowledge Goal",
+                    "Attitude Change Goal",
+                    "Self-awareness Goal",
+                    "Social Change Goal"
+                ],
+                answer: 2,
+                explanation: "Self-awareness Goal (Page 8)"
+            },
+            {
+                question: "The ultimate aim of the \"Social Change\" goal in health education is to:",
+                options: [
+                    "Force people to change their habits.",
+                    "Make healthy choices the easier choices for society.",
+                    "Focus only on individual behavior change.",
+                    "Replace government health policies."
+                ],
+                answer: 1,
+                explanation: "Make healthy choices the easier choices for society. (Page 8)"
+            },
+            {
+                question: "One of the objectives of health education is to:",
+                options: [
+                    "Provide free medication to all.",
+                    "Diagnose diseases at an early stage.",
+                    "Arouse interest in people to share in solving community health problems.",
+                    "Replace the role of nurses and physicians."
+                ],
+                answer: 2,
+                explanation: "Arouse interest in people to share in solving community health problems. (Page 10)"
+            },
+            {
+                question: "At which level of health education is the main goal to prevent the effects of complications and make the best of remaining health potential?",
+                options: [
+                    "Primary",
+                    "Secondary",
+                    "Tertiary",
+                    "Quaternary"
+                ],
+                answer: 2,
+                explanation: "Tertiary (Page 11)"
+            },
+            {
+                question: "An example of Secondary level health education is:",
+                options: [
+                    "Changing faulty health behavior in someone who is already ill.",
+                    "Improving the general health of adults.",
+                    "Rehabilitation after a major illness.",
+                    "Vaccinating children against diseases."
+                ],
+                answer: 0,
+                explanation: "Changing faulty health behavior in someone who is already ill. (Page 11)"
+            },
+            {
+                question: "Which level of health education aims to prevent illness and improve the general quality of health and life?",
+                options: [
+                    "Primary",
+                    "Secondary",
+                    "Tertiary",
+                    "Initial"
+                ],
+                answer: 0,
+                explanation: "Primary (Page 11)"
+            },
+            {
+                question: "Health education is concerned with:",
+                options: [
+                    "Only physical health.",
+                    "Only mental health.",
+                    "The whole person: physical, mental, and social.",
+                    "Only community-level health problems."
+                ],
+                answer: 2,
+                explanation: "The whole person: physical, mental, and social. (Page 12)"
+            },
+            {
+                question: "Which of the following is a dimension of health education?",
+                options: [
+                    "It is only for children and adolescents.",
+                    "It is a short-term process for acute problems.",
+                    "It is directed only at individuals, not families or communities.",
+                    "It is a lifelong process."
+                ],
+                answer: 3,
+                explanation: "It is a lifelong process. (Page 12)"
+            },
+            {
+                question: "Health education is directed towards:",
+                options: [
+                    "Only primary health problems.",
+                    "Only tertiary health problems.",
+                    "Persons, families, and communities.",
+                    "Only those who are already sick."
+                ],
+                answer: 2,
+                explanation: "Persons, families, and communities. (Page 12)"
+            },
+            {
+                question: "In the \"Stages of Adoption,\" what characterizes the Unawareness Stage?",
+                options: [
+                    "The person is actively trying the new practice.",
+                    "The person is not aware of the new idea or practice.",
+                    "The person is evaluating the advantages and disadvantages.",
+                    "The person has fully adopted the new behavior."
+                ],
+                answer: 1,
+                explanation: "The person is not aware of the new idea or practice. (Page 13)"
+            },
+            {
+                question: "During which stage does a person find out the advantages and disadvantages of a new health practice?",
+                options: [
+                    "Awareness Stage",
+                    "Evaluation Stage",
+                    "Interest Stage",
+                    "Trial Stage"
+                ],
+                answer: 1,
+                explanation: "Evaluation Stage (Page 13)"
+            },
+            {
+                question: "The final stage in the adoption of a new health idea is when the individual:",
+                options: [
+                    "Becomes aware of it.",
+                    "Evaluates its pros and cons.",
+                    "Puts it into practice for the first time.",
+                    "Accepts it as beneficial and adopts it."
+                ],
+                answer: 3,
+                explanation: "Accepts it as beneficial and adopts it. (Page 13)"
+            },
+            {
+                question: "Which objective of health education aims to motivate the public to change faulty health habits and beliefs?",
+                options: [
+                    "To arouse attention",
+                    "To encourage problem identification",
+                    "To arouse interest in participation",
+                    "To motivate behavior change"
+                ],
+                answer: 3,
+                explanation: "To motivate behavior change (Page 10)"
+            },
+            {
+                question: "Health education involves:",
+                options: [
+                    "Only formal teaching in schools.",
+                    "Only informal teaching within families.",
+                    "Both formal and informal teaching.",
+                    "Replacing all other forms of healthcare."
+                ],
+                answer: 2,
+                explanation: "Both formal and informal teaching. (Page 12)"
+            },
+            {
+                question: "The \"Trial Stage\" in the adoption of a new idea is when an individual:",
+                options: [
+                    "Puts the idea into practice for the first time.",
+                    "First hears about the idea.",
+                    "Actively seeks more information.",
+                    "Fully integrates the idea into their life."
+                ],
+                answer: 0,
+                explanation: "Puts the idea into practice for the first time. (Page 13)"
+            }
+        ];
+
+        // Quiz state variables
+        let currentQuestion = 0;
+        let score = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let incorrectQuestions = [];
+
+        // DOM elements
+        const quizContainer = document.getElementById('quiz-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const progressBar = document.getElementById('progress-bar');
+        const currentQuestionEl = document.getElementById('current-question');
+        const totalQuestionsEl = document.getElementById('total-questions');
+        const scoreEl = document.getElementById('score');
+        const totalScoreEl = document.getElementById('total-score');
+        const resultsContainer = document.getElementById('results');
+        const finalScoreEl = document.getElementById('final-score');
+        const performanceMessageEl = document.getElementById('performance-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        const reviewSection = document.getElementById('review-section');
+        const incorrectQuestionsList = document.getElementById('incorrect-questions-list');
+
+        // Initialize quiz
+        function initQuiz() {
+            totalQuestionsEl.textContent = quizData.length;
+            totalScoreEl.textContent = quizData.length;
+            showQuestion();
+            updateProgressBar();
+            
+            // Event listeners
+            prevBtn.addEventListener('click', showPreviousQuestion);
+            nextBtn.addEventListener('click', showNextQuestion);
+            restartBtn.addEventListener('click', restartQuiz);
+            reviewBtn.addEventListener('click', showIncorrectQuestions);
+        }
+
+        // Show current question
+        function showQuestion() {
+            currentQuestionEl.textContent = currentQuestion + 1;
+            scoreEl.textContent = score;
+            
+            const question = quizData[currentQuestion];
+            let optionsHTML = '';
+            
+            question.options.forEach((option, index) => {
+                let optionClass = 'option';
+                if (userAnswers[currentQuestion] === index) {
+                    optionClass += ' selected';
+                    if (index === question.answer) {
+                        optionClass += ' correct';
+                    } else {
+                        optionClass += ' incorrect';
+                    }
+                }
+                
+                optionsHTML += `
+                    <div class="${optionClass}" data-index="${index}">
+                        ${String.fromCharCode(65 + index)}) ${option}
+                    </div>
+                `;
+            });
+            
+            let feedbackHTML = '';
+            if (userAnswers[currentQuestion] !== null) {
+                const isCorrect = userAnswers[currentQuestion] === question.answer;
+                feedbackHTML = `
+                    <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+                        ${isCorrect ? '✓ Correct!' : '✗ Incorrect!'} 
+                        ${!isCorrect ? `Correct answer: ${String.fromCharCode(65 + question.answer)}) ${question.options[question.answer]}` : ''}
+                        <br><br>Explanation: ${question.explanation}
+                    </div>
+                `;
+            }
+            
+            quizContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-number">Question ${currentQuestion + 1}/${quizData.length}</div>
+                    <div class="question-text">${question.question}</div>
+                    <div class="options">${optionsHTML}</div>
+                    ${feedbackHTML}
+                </div>
+            `;
+            
+            // Add event listeners to options
+            const optionElements = quizContainer.querySelectorAll('.option');
+            optionElements.forEach(option => {
+                option.addEventListener('click', selectOption);
+            });
+            
+            // Update navigation buttons
+            prevBtn.disabled = currentQuestion === 0;
+            nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Finish Quiz' : 'Next';
+        }
+
+        // Select an option
+        function selectOption(e) {
+            if (userAnswers[currentQuestion] !== null) return; // Already answered
+            
+            const selectedOption = e.currentTarget;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            
+            userAnswers[currentQuestion] = selectedIndex;
+            
+            // Check if answer is correct
+            if (selectedIndex === quizData[currentQuestion].answer) {
+                score++;
+                scoreEl.textContent = score;
+            } else {
+                // Add to incorrect questions list
+                incorrectQuestions.push({
+                    question: quizData[currentQuestion].question,
+                    userAnswer: selectedIndex,
+                    correctAnswer: quizData[currentQuestion].answer,
+                    options: quizData[currentQuestion].options,
+                    explanation: quizData[currentQuestion].explanation,
+                    questionNumber: currentQuestion + 1
+                });
+            }
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Show next question
+        function showNextQuestion() {
+            if (currentQuestion < quizData.length - 1) {
+                currentQuestion++;
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show previous question
+        function showPreviousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                showQuestion();
+            }
+        }
+
+        // Update progress bar
+        function updateProgressBar() {
+            const progress = ((currentQuestion + 1) / quizData.length) * 100;
+            progressBar.style.width = `${progress}%`;
+        }
+
+        // Show results
+        function showResults() {
+            quizContainer.style.display = 'none';
+            document.querySelector('.navigation').style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            document.querySelector('.stats').style.display = 'none';
+            
+            finalScoreEl.textContent = score;
+            
+            // Performance message
+            const percentage = (score / quizData.length) * 100;
+            let message = '';
+            if (percentage >= 80) {
+                message = 'Excellent! You have a strong understanding of Health Education Lecture No. 1.';
+            } else if (percentage >= 60) {
+                message = 'Good job! You have a solid grasp of the material.';
+            } else if (percentage >= 40) {
+                message = 'Not bad! Review the material and try again.';
+            } else {
+                message = 'Keep studying! Review the lectures and try again.';
+            }
+            
+            performanceMessageEl.textContent = message;
+            resultsContainer.style.display = 'block';
+            
+            // Show review button only if there are incorrect answers
+            if (incorrectQuestions.length > 0) {
+                reviewBtn.style.display = 'inline-block';
+            } else {
+                reviewBtn.style.display = 'none';
+            }
+        }
+
+        // Show incorrect questions
+        function showIncorrectQuestions() {
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'block';
+            
+            let incorrectHTML = '';
+            incorrectQuestions.forEach((item, index) => {
+                incorrectHTML += `
+                    <div class="review-question">
+                        <div class="review-question-number">Question ${item.questionNumber}</div>
+                        <div class="review-question-text">${item.question}</div>
+                        <div>Your answer: ${String.fromCharCode(65 + item.userAnswer)}) ${item.options[item.userAnswer]}</div>
+                        <div class="review-answer review-correct">Correct answer: ${String.fromCharCode(65 + item.correctAnswer)}) ${item.options[item.correctAnswer]}</div>
+                        <div class="review-explanation">${item.explanation}</div>
+                    </div>
+                `;
+            });
+            
+            incorrectQuestionsList.innerHTML = incorrectHTML;
+        }
+
+        // Restart quiz
+        function restartQuiz() {
+            currentQuestion = 0;
+            score = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            incorrectQuestions = [];
+            
+            quizContainer.style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.querySelector('.progress-container').style.display = 'block';
+            document.querySelector('.stats').style.display = 'flex';
+            resultsContainer.style.display = 'none';
+            reviewSection.style.display = 'none';
+            
+            showQuestion();
+            updateProgressBar();
+        }
+
+        // Initialize the quiz when the page loads
+        window.addEventListener('load', initQuiz);
+    </script>
+</body>
+</html>
